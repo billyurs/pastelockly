@@ -16,15 +16,19 @@ def sender(request):
 def receiver(request):
     try:
         key = request.GET.get('key')
-        msg_obj = MessageDetails.objects.get(encrypted_data=key)
+        msg_obj = MessageDetails.objects.filter(encrypted_data=key)
         response_recv = {}
         if msg_obj:
+            msg_obj = msg_obj[0]
             response_recv['protected'] = msg_obj.protected
             response_recv['encrypted_data'] = key
             if response_recv.get('protected') == 'True':
                 response_recv['message'] = ''
             else:
                 response_recv['message'] = msg_obj.message_data
+        else:
+            response_recv['message'] = ''
+            response_recv['encrypted_data'] = key
         return render(request, 'receiver.html', {'message': json.dumps(response_recv)})
     except Exception as e:
         formatted_lines = traceback.format_exc().splitlines()
@@ -84,5 +88,10 @@ def decode_sender_data(request):
                                         'message': msg_obj.message_data}
                                        ))
     else:
+        message_data = decode(key, encrypted_key)
+        if message_data:
+            return HttpResponse(json.dumps({'response': 'success',
+                                            'message': message_data}
+                                           ))
         return HttpResponse(json.dumps({'response': 'failure',
                                         'message': {}}))

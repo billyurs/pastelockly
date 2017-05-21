@@ -37,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="31" column="64" lean-forward="false" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+            <state relative-caret-position="233">
+              <caret line="94" column="45" lean-forward="true" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
               <folding>
                 <element signature="e#0#88#0" expanded="true" />
               </folding>
@@ -81,7 +81,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="receiver.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="receiver.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/receiver.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="159">
@@ -153,9 +153,9 @@
         <option value="$PROJECT_DIR$/pastelockly/urls.py" />
         <option value="$PROJECT_DIR$/app/templates/sender.html" />
         <option value="$PROJECT_DIR$/app/static/js/sender.js" />
-        <option value="$PROJECT_DIR$/app/views.py" />
         <option value="$PROJECT_DIR$/app/static/js/receiver.js" />
         <option value="$PROJECT_DIR$/app/templates/receiver.html" />
+        <option value="$PROJECT_DIR$/app/views.py" />
       </list>
     </option>
   </component>
@@ -534,16 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="31" column="64" lean-forward="false" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
-          <folding>
-            <element signature="e#0#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/js/receiver.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -557,6 +547,16 @@
         <state relative-caret-position="159">
           <caret line="116" column="41" lean-forward="false" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="94" column="45" lean-forward="true" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#88#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
