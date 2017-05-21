@@ -3,10 +3,17 @@ paste_locky_app.controller('receiver_controller',['$scope','$timeout','$http',
     {
         $scope.init = function(message)
         {
-            $scope.message_json = message
-            if (message.message)
+            if (message)
             {
-                $scope.message = $scope.message_json.message
+                $scope.message_json = message
+                if (message.message)
+                {
+                    $scope.message = $scope.message_json.message
+                }
+            }
+            else
+            {
+                $scope.error_message = 'URL is not correct'
             }
         }
 

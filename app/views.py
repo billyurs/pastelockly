@@ -1,7 +1,9 @@
 from django.shortcuts import render_to_response, redirect, render, Http404, HttpResponse
 import base64
 import json
+import traceback
 from app.models import MessageDetails
+
 
 def index(request):
     if request.method == "GET":
@@ -12,17 +14,22 @@ def sender(request):
         return render(request, 'sender.html')
 
 def receiver(request):
-    key = request.GET.get('key')
-    msg_obj = MessageDetails.objects.get(encrypted_data=key)
-    response_recv = {}
-    if msg_obj:
-        response_recv['protected'] = msg_obj.protected
-        response_recv['encrypted_data'] = key
-        if response_recv.get('protected') == 'True':
-            response_recv['message'] = ''
-        else:
-            response_recv['message'] = msg_obj.message_data
-    return render(request, 'receiver.html', {'message': json.dumps(response_recv)})
+    try:
+        key = request.GET.get('key')
+        msg_obj = MessageDetails.objects.get(encrypted_data=key)
+        response_recv = {}
+        if msg_obj:
+            response_recv['protected'] = msg_obj.protected
+            response_recv['encrypted_data'] = key
+            if response_recv.get('protected') == 'True':
+                response_recv['message'] = ''
+            else:
+                response_recv['message'] = msg_obj.message_data
+        return render(request, 'receiver.html', {'message': json.dumps(response_recv)})
+    except Exception as e:
+        formatted_lines = traceback.format_exc().splitlines()
+        print formatted_lines
+        return render(request, 'receiver.html', {'message': {}})
 
 def save_sender_data(request):
     sender_params = json.loads(request.body)
@@ -63,9 +70,10 @@ def decode_sender_data(request):
     decode_params = json.loads(request.body)
     encrypted_key = decode_params.get('encrypted_data')
     key = decode_params.get('key')
-    msg_obj = MessageDetails.objects.get(encrypted_data=encrypted_key, key=key)
+    msg_obj = MessageDetails.objects.filter(encrypted_data=encrypted_key, key=key)
     response_recv = {}
     if msg_obj:
+        msg_obj = msg_obj[0]
         response_recv['protected'] = msg_obj.protected
         response_recv['encrypted_data'] = key
         if response_recv.get('protected'):
