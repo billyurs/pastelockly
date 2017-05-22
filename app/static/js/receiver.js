@@ -3,7 +3,7 @@ paste_locky_app.controller('receiver_controller',['$scope','$timeout','$http',
     {
         $scope.init = function(message)
         {
-            if (message)
+            if (message.protected)
             {
                 $scope.message_json = message
                 if (message.message)
