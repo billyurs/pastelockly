@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, redirect, render, Http404, HttpResponse
+from django.shortcuts import render_to_response, redirect, render, Http404, HttpResponse, HttpResponseRedirect
 import base64
 import json
 import traceback
@@ -7,7 +7,7 @@ from app.models import MessageDetails
 
 def index(request):
     if request.method == "GET":
-        return render(request, 'index.html')
+        return HttpResponseRedirect('/sender')
 
 def sender(request):
     if request.method == "GET":
